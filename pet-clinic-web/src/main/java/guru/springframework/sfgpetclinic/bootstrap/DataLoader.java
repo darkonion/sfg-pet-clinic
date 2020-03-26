@@ -20,6 +20,7 @@ public class DataLoader implements CommandLineRunner {
         this.vetService = new VetServiceMap();
     }
 
+
     @Override
     public void run(String... args) throws Exception {
 
