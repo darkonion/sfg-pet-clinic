@@ -33,7 +33,7 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetS
 
     @Override
     public Vet save(Vet object) {
-        //nasladowanie Hibernate - jeśli zapiszemy sobie veta ze specjalizacjami, ten algorytm sprawdzi czy juz istnieja i jesli nie to sam je zapisze.
+        //nasladowanie Hibernate - jeśli zapiszemy sobie veta ze specjalizacjami, ten algorytm sprawdzi czy juz istnieja i jesli nie to sam je zapisze, cool.
         if (object.getSpecialities().size() > 0) {
             object.getSpecialities().forEach(speciality -> {
                 if (speciality.getId() == null) {
