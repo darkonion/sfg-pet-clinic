@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-public class AbstractMapService<T extends BaseEntity, ID extends Long> {
+public class AbstractServiceMap<T extends BaseEntity, ID extends Long> {
     protected Map<Long, T> map = new HashMap<>();
 
     Set<T> findAll() {
