@@ -74,7 +74,7 @@ class OwnerControllerTest {
 
     @Test
     void processFindFormReturnMany() throws Exception {
-        when(ownerService.findAllByLastNameLike(anyString())).thenReturn(owners.stream().collect(Collectors.toList()));
+        when(ownerService.findAllByLastNameIgnoreCaseContaining(anyString())).thenReturn(owners.stream().collect(Collectors.toList()));
         mockMvc.perform(get("/owners"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/ownersList"))
