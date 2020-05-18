@@ -46,7 +46,7 @@ public class PetController {
     }
 
     @ModelAttribute("owner")
-    public Owner findOwner(@PathVariable Long ownerId) {
+    public Owner findOwner(@PathVariable("ownerId") Long ownerId) {
         return ownerService.findById(ownerId);
     }
 
@@ -59,12 +59,13 @@ public class PetController {
     public String initCreationForm(Owner owner, Model model) {
         Pet pet = new Pet();
         owner.getPets().add(pet); ///to check!!!
+        pet.setOwner(owner);
         model.addAttribute("pet", pet);
         return VIEWS_PETS_CREATE_OR_UPDATE_FORM;
     }
 
     @PostMapping("/pets/new")
-    public String processCreationForm(Owner owner, @Valid @ModelAttribute Pet pet, BindingResult result, Model model) {
+    public String processCreationForm(Owner owner, @Valid Pet pet, BindingResult result, Model model) {
         if (StringUtils.hasLength(pet.getName()) && pet.isNew() && owner.getPet(pet.getName(), true) != null) {
             result.rejectValue("name", "duplicate", "already exists");
         }

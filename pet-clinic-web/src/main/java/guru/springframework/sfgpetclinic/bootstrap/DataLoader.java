@@ -53,7 +53,7 @@ public class DataLoader implements CommandLineRunner {
         PetType savedDogPetType = petTypeService.save(dog);
 
         PetType cat = new PetType();
-        dog.setName("Cat");
+        cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
 
         Speciality radiology = new Speciality();
@@ -75,8 +75,6 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("Miami");
         owner1.setTelephone("12312");
 
-        Owner.builder().address("ASDF").build();
-
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedDogPetType);
         mikesPet.setOwner(owner1);
@@ -91,13 +89,13 @@ public class DataLoader implements CommandLineRunner {
         owner2.setLastName("Glenanne");
         owner2.setAddress("13 Brickerel");
         owner2.setCity("Miami");
-        owner2.setTelephone("1212312");
+        owner2.setTelephone("12122");
 
         Pet fionasCat = new Pet();
-        fionasCat.setName("Azja");
-        fionasCat.setBirthDate(LocalDate.now());
-        fionasCat.setOwner(owner2);
         fionasCat.setPetType(savedCatPetType);
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setName("Azja");
         owner2.getPets().add(fionasCat);
 
         //nasladujemy opcje Hibernate, ze zapisując obiekt, zapisujemy razem z nim jego zagniezdzone obiekty
